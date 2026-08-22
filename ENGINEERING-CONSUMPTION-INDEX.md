@@ -4,12 +4,12 @@ Earned engineering consumption is intentionally thin and is subordinate to the p
 
 ## Committed baseline artifact
 
-[`../../experiments/computational-applicability-transport-v0/`](../../experiments/computational-applicability-transport-v0/)
+[`experiments/computational-applicability-transport-v0/`](experiments/computational-applicability-transport-v0/)
 
 Canonical components:
 
-- [`SPEC.md`](../../experiments/computational-applicability-transport-v0/SPEC.md) — normative derived engineering specification;
-- [`computational-applicability-transport-v1.schema.json`](../../experiments/computational-applicability-transport-v0/computational-applicability-transport-v1.schema.json) — JSON Schema Draft 2020-12 structural schema;
+- [`SPEC.md`](experiments/computational-applicability-transport-v0/SPEC.md) — normative derived engineering specification;
+- [`computational-applicability-transport-v1.schema.json`](experiments/computational-applicability-transport-v0/computational-applicability-transport-v1.schema.json) — JSON Schema Draft 2020-12 structural schema;
 - `fixtures/valid/` — 5 intended-valid examples;
 - `fixtures/invalid/` — 7 intended-invalid deletion/direction/quantitative examples.
 

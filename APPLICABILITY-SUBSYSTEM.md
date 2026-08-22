@@ -37,12 +37,12 @@ This document explains how the bridge, artifact and external owner premises fit 
 
 The existing thin artifact lives at:
 
-[`../../experiments/computational-applicability-transport-v0/`](../../experiments/computational-applicability-transport-v0/)
+[`experiments/computational-applicability-transport-v0/`](experiments/computational-applicability-transport-v0/)
 
 Its components are:
 
-- [`SPEC.md`](../../experiments/computational-applicability-transport-v0/SPEC.md) — normative engineering specification derived from the bridge;
-- [`computational-applicability-transport-v1.schema.json`](../../experiments/computational-applicability-transport-v0/computational-applicability-transport-v1.schema.json) — Draft 2020-12 structural schema;
+- [`SPEC.md`](experiments/computational-applicability-transport-v0/SPEC.md) — normative engineering specification derived from the bridge;
+- [`computational-applicability-transport-v1.schema.json`](experiments/computational-applicability-transport-v0/computational-applicability-transport-v1.schema.json) — Draft 2020-12 structural schema;
 - `fixtures/valid/` — five intended-valid conformance examples;
 - `fixtures/invalid/` — seven intended-invalid deletion/direction/quantitative examples.
 
