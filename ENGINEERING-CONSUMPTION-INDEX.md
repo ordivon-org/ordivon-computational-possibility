@@ -17,6 +17,23 @@ The artifact entered canonical Computing history at commit:
 
 `1a9cc7b3a9144751b6f3d38650f42f0ea7340148`.
 
+## Repository-owned conformance entry
+
+Current consumer pressure has earned one small reproducibility improvement without changing the artifact's semantic role:
+
+```bash
+scripts/check-applicability-artifact
+```
+
+The script is an environment/conformance wrapper around the ordinary third-party Python `jsonschema` Draft 2020-12 implementation. If `jsonschema` is not already importable, it creates a temporary virtual environment outside the repository and installs the bounded dependency declared in `requirements-validation.txt`. It then runs `scripts/validate_applicability_fixtures.py` over the committed schema and fixtures.
+
+The expected conformance set is:
+
+- 5/5 files under `fixtures/valid/` validate structurally;
+- 7/7 files under `fixtures/invalid/` are rejected structurally.
+
+This is **not** a bespoke semantic validator. The repository-owned Python file is only a fixture expectation harness around a standard validator implementation.
+
 ## Truth boundary
 
 The artifact is derived instrumentation, not a Foundation, theorem engine, owner-state cache, production gate, registry, service, or automatic currentness system.
@@ -35,13 +52,13 @@ Owner-authoritative facts remain referenced with scope/currentness. They are nev
 
 The current artifact supports declarative structural conformance only. No bespoke validator is part of the earned baseline.
 
-A future standard Draft 2020-12 validator may be used when supplied by ordinary Computing dependencies, but installing or committing one solely for this artifact is not required.
+The new repository-owned command only makes the already-earned Draft 2020-12 conformance contract reproducible from a cold checkout. It does not validate theorem truth, semantic preservation, current owner premises, authorization, measurement semantics or actual realization.
 
 ## Not earned
 
 Without a concrete consumer falsifier, do not expand this artifact into:
 
-- validator/service/database;
+- semantic validator/service/database;
 - MCP surface;
 - global applicability registry;
 - theorem engine;

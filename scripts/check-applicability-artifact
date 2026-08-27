@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PYTHON="${PYTHON:-python3}"
+
+run_harness() {
+  "$1" "$ROOT/scripts/validate_applicability_fixtures.py"
+}
+
+if "$PYTHON" - <<'PY' >/dev/null 2>&1
+import jsonschema
+from jsonschema import Draft202012Validator
+PY
+then
+  run_harness "$PYTHON"
+  exit $?
+fi
+
+TMP="$(mktemp -d "${TMPDIR:-/tmp}/cp-applicability-validation.XXXXXX")"
+trap 'rm -rf "$TMP"' EXIT
+
+"$PYTHON" -m venv "$TMP/venv"
+PIP_DISABLE_PIP_VERSION_CHECK=1 "$TMP/venv/bin/pip" -q install -r "$ROOT/requirements-validation.txt"
+run_harness "$TMP/venv/bin/python"
