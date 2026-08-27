@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "kind": "ordivon.computing.computational-applicability-transport",
+  "recordId": "capability-substitution-pointwise-history-witness-v1",
+  "claimScope": {
+    "formalClaimRef": "cp:claim:pointwise-valid-history-violation-witness-v1",
+    "theoremKind": "constructive-achievability",
+    "regimeRef": "cp:regime:two-call-pointwise-response-relation-v1",
+    "obligationRef": "cp:obligation:realize-history-violating-trace-v1",
+    "quantification": {
+      "scopeKind": "instance",
+      "domainRef": "cp:domain:two-call-provider-trace-v1",
+      "aggregation": "none"
+    }
+  },
+  "targetScope": {
+    "owner": "runtime",
+    "targetIdentity": "cp-dogfood-pointwise-only-provider",
+    "targetRevision": "job-01a043f2-6f17-7cc0-8526-8e1927cdf7c5",
+    "configurationRef": "cp:dogfood:python3-pointwise-only-provider-v1"
+  },
+  "transportBurden": {
+    "direction": "formal-to-actual-implementation",
+    "witnessRelationRef": "cp:transport:z3-trace-to-runtime-provider-trace-exact-v1",
+    "semanticPreservationRefs": [
+      "cp:dogfood:ordered-two-call-integer-trace-identity-v1"
+    ]
+  },
+  "premiseEvidence": [
+    {
+      "owner": "external-formal-carrier:z3",
+      "claimRef": "cp:dogfood:z3-pointwise-history-counterexample-sat",
+      "evidenceRef": "job-01a043f2-4d06-7992-a68c-25d4972a6aeb",
+      "scopeRef": "cp:dogfood:z3-4.16.0-two-call-trace-v1",
+      "localStatus": "discharged"
+    },
+    {
+      "owner": "runtime",
+      "claimRef": "runtime:execution:pointwise-only-provider-produced-0-0",
+      "evidenceRef": "job-01a043f2-6f17-7cc0-8526-8e1927cdf7c5",
+      "scopeRef": "runtime:job:job-01a043f2-6f17-7cc0-8526-8e1927cdf7c5",
+      "localStatus": "discharged"
+    },
+    {
+      "owner": "experiment",
+      "claimRef": "cp:dogfood:formal-runtime-trace-coordinate-identity",
+      "evidenceRef": "experiments/capability-substitution-formal-carrier-v0/README.md",
+      "scopeRef": "cp:dogfood:ordered-two-call-integer-trace-v1",
+      "localStatus": "discharged"
+    }
+  ],
+  "verdict": {
+    "status": "APPLIES",
+    "consequence": "For the exact Runtime-observed PointwiseOnlyProvider target, the formal history-violating witness [0,0] is actually realized; pointwise response validity alone therefore does not guarantee the required increment-history contract for this target.",
+    "basisRefs": [
+      "job-01a043f2-4d06-7992-a68c-25d4972a6aeb",
+      "job-01a043f2-6f17-7cc0-8526-8e1927cdf7c5",
+      "cp:transport:z3-trace-to-runtime-provider-trace-exact-v1"
+    ],
+    "blockers": []
+  }
+}

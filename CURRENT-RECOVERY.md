@@ -132,6 +132,14 @@ These are non-authoritative lexical hints for callers authoring bounded retrieva
 
 For Atlas retrieval, caller-authored bilingual variants are preferred over silently treating translation as semantic equivalence.
 
+## External-carrier capability dogfood
+
+The current bounded example at [`experiments/capability-substitution-formal-carrier-v0/`](experiments/capability-substitution-formal-carrier-v0/) demonstrates the intended role split:
+
+`CP question/transport boundary -> external Z3 formal witness -> Runtime actual trace -> bounded Applicability verdict`.
+
+It establishes an exact `PointwiseValidity != HistoryValidity` counterexample/actual-witness pair without adding Z3 as a CP dependency or treating one provider failure as global impossibility.
+
 ## Machine-consumption entry
 
 The Applicability artifact remains deliberately thin. Run:

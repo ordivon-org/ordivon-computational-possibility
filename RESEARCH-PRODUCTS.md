@@ -185,6 +185,21 @@ Permanent practical controls:
 
 This directly validates the asymmetric applicability law: one actual witness may establish a narrow constructive existence claim, while actual impossibility requires coverage of every relevant actual candidate class.
 
+### External formal-carrier / stateful substitution case
+
+A 2026-08-27 bounded dogfood deliberately kept the formal solver outside CP. An ephemeral external Z3 4.16.0 carrier found a two-call counterexample trace `[0,0]` that satisfies the declared pointwise response relation while violating the required increment-history contract. A separate Runtime execution then observed the same `[0,0]` trace from a concrete `PointwiseOnlyProvider`, while a `StatefulCounterProvider` produced `[0,1]` and satisfied both the pointwise and history contracts.
+
+The experiment is preserved at [`experiments/capability-substitution-formal-carrier-v0/`](experiments/capability-substitution-formal-carrier-v0/).
+
+It validates the existing controls:
+
+- `PointwiseValidity != HistoryValidity`;
+- shared pointwise output shape does not establish history-sensitive capability substitutability;
+- one exact formal counterexample plus one matching actual witness supports a narrow constructive `APPLIES` consequence;
+- `OneCounterexampleProvider != GlobalProviderImpossibility`.
+
+The practical capability lesson is architectural: CP can constitute and bound the computational inference, an external formal carrier can search/prove within its native role, Runtime can provide actual execution evidence, and Applicability can control what transports back. No CP-native theorem prover or Z3 repository dependency is required.
+
 ## 6. What CP produces in practice
 
 The four product families support recurring decisions such as:
