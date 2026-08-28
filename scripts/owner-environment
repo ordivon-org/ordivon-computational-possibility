@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+set -euo pipefail
+repo=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
+mode=${1:-}
+python_bin=${PYTHON_BIN:-${PYTHON:-$(command -v python3 || true)}}
+
+usage() {
+  cat <<'TXT'
+usage: scripts/owner-environment doctor|test|cold-start
+
+doctor      verify the Python execution plane
+test        verify owner recovery and the current Applicability conformance entry
+cold-start  prove the same gate from an unwarmed source copy
+
+The current owner gate does not require the later Z3 formal-carrier dogfood: that
+external carrier remains experiment evidence, not repository dependency or owner authority.
+TXT
+}
+
+doctor() {
+  [[ -n "$python_bin" && -x "$python_bin" ]] || { echo 'CP owner environment requires python3' >&2; exit 1; }
+  "$python_bin" - <<'PY'
+import sys
+if sys.version_info < (3, 11):
+    raise SystemExit(f"CP recovery checks require Python >=3.11, got {sys.version.split()[0]}")
+print(f"owner environment doctor: valid python={sys.version.split()[0]}")
+PY
+}
+
+run_tests() {
+  doctor
+  (cd "$repo" && "$python_bin" -m unittest -v checks.test_owner_recovery)
+  (cd "$repo" && PYTHON="$python_bin" scripts/check-applicability-artifact)
+  echo 'owner environment test: passed'
+}
+
+case "$mode" in
+  doctor) doctor ;;
+  test) run_tests ;;
+  cold-start)
+    doctor
+    tmp=$(mktemp -d -t ordivon-cp-owner-env-XXXXXX)
+    trap 'rm -rf "$tmp"' EXIT
+    mkdir -p "$tmp/repo"
+    (cd "$repo" && tar --exclude=.git --exclude='__pycache__' --exclude='*.pyc' -cf - .) | tar -xf - -C "$tmp/repo"
+    PYTHON_BIN="$python_bin" "$tmp/repo/scripts/owner-environment" test
+    echo 'owner environment cold-start: passed'
+    ;;
+  --help|-h) usage ;;
+  *) usage >&2; exit 2 ;;
+esac

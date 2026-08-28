@@ -16,6 +16,15 @@ Project-formation documents intentionally preserve the earlier 2026-08-18 conclu
 
 For a fresh Agent or consumer, start with [`CURRENT-RECOVERY.md`](CURRENT-RECOVERY.md) before replaying formation history. It gives the operation-relative CP entrypoints, current physical standing, retrieval hints, and post-closure pressure/reopen boundary.
 
+Current owner recovery and the AuthorityVersion-bound Applicability conformance entry can be replayed together with:
+
+```bash
+scripts/owner-environment test
+scripts/owner-environment cold-start
+```
+
+The gate intentionally does not require the later external-Z3 dogfood. That experiment remains current readable evidence of tool assimilation, but it has not been promoted into the current owner AuthorityVersion or CP dependency graph.
+
 ## Start here
 
 1. [CURRENT-RECOVERY](CURRENT-RECOVERY.md) — current physical standing, Agent-first operation selector, retrieval coordinates and post-closure pressure boundary.
