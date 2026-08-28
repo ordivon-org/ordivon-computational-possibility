@@ -71,6 +71,14 @@ class ComputationalPossibilityOwnerRecoveryTests(unittest.TestCase):
         self.assertIn("result:computational-possibility:applicability-conformance-entry-current", corpus)
         self.assertIn("APPLICABILITY_CONFORMANCE_ENTRY", corpus)
 
+    def test_historical_dogfood_does_not_masquerade_as_current_external_state(self) -> None:
+        products = (ROOT / "RESEARCH-PRODUCTS.md").read_text(encoding="utf-8")
+        self.assertIn("b5eae9c4abeea960d4b3f9e41e54fd07a04477a4", products)
+        self.assertIn("preserved dogfood evidence", products)
+        self.assertIn("must reacquire current owner-native Runtime/Interlocus evidence", products)
+        self.assertNotIn("Current Harness Campaign-5 evidence", products)
+        self.assertNotIn("A live 2026-08-19 observation", products)
+
     def test_latest_formal_carrier_dogfood_is_not_silently_promoted_into_authority(self) -> None:
         corpus = json.dumps(self.publication, ensure_ascii=False).lower()
         self.assertNotIn("z3-solver", corpus)

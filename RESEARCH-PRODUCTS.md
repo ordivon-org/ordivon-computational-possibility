@@ -148,7 +148,7 @@ The general seam is:
 
 ### Harness provider-route case
 
-Current Harness Campaign-5 evidence established bounded co-admission of two distinct provider/adapter/model routes under the same exact `HarnessProviderUsePolicy U`, while route/input/policy drift fails closed.
+At the CP research-product source fence `b5eae9c4abeea960d4b3f9e41e54fd07a04477a4` (2026-08-19), Harness Campaign-5 evidence established bounded co-admission of two distinct provider/adapter/model routes under the same exact `HarnessProviderUsePolicy U`, while route/input/policy drift failed closed. This is preserved dogfood evidence, not a claim about current live Harness provider state.
 
 CP consumption exposed three different claims that must not collapse:
 
@@ -169,7 +169,7 @@ This demonstrates a clean owner seam: Harness decides whether the concrete compo
 
 ### Runtime / Interlocus applicability case
 
-A live 2026-08-19 observation found one scoped egress anchor/profile unavailable/non-listening while a separate pure local Runtime witness executed successfully.
+The same CP source fence records a 2026-08-19 Runtime / cross-locus observation in which one scoped egress anchor/profile was unavailable/non-listening while a separate pure local Runtime witness executed successfully. The observation is historical dogfood evidence; any present-tense applicability verdict must reacquire current owner-native Runtime/Interlocus evidence.
 
 CP consumption produced three different scoped consequences:
 
