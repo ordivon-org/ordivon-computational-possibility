@@ -1,3 +1,5 @@
+> **Modification notice (Apache-2.0 §4(b)):** This file contains changes from an Apache-2.0-licensed upstream version in `ordivon-computing`.
+
 # Computational Possibility — Research Project
 
 Canonical owner/project: **Computational Possibility**.

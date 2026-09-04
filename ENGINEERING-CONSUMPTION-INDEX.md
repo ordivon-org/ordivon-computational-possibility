@@ -1,3 +1,5 @@
+> **Modification notice (Apache-2.0 §4(b)):** This file contains changes from an Apache-2.0-licensed upstream version in `ordivon-computing`.
+
 # Computational Possibility Engineering Consumption Index
 
 Earned engineering consumption is intentionally thin and is subordinate to the project-level [Applicability / Theorem Transport Subsystem](APPLICABILITY-SUBSYSTEM.md).
