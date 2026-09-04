@@ -1,5 +1,3 @@
-> **Modification notice (Apache-2.0 §4(b)):** This file contains changes from an Apache-2.0-licensed upstream version in `ordivon-computing`.
-
 # Computational Possibility — Applicability / Theorem Transport Subsystem v1
 
 ## 1. Purpose
